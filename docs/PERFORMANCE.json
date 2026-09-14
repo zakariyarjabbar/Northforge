@@ -1,0 +1,19 @@
+{
+  "context": "Single local Chromium load per viewport, no network or CPU throttling. Not field data or representative mobile hardware. INP not measured.",
+  "observations": [
+    {
+      "viewport": "desktop",
+      "lcp": 36,
+      "cls": 0,
+      "resources": 43,
+      "transferBytes": 1617040
+    },
+    {
+      "viewport": "mobile",
+      "lcp": 36,
+      "cls": 0,
+      "resources": 28,
+      "transferBytes": 809637
+    }
+  ]
+}

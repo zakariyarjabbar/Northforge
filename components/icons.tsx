@@ -1,0 +1,10 @@
+import type { SVGProps } from 'react';
+type Props = SVGProps<SVGSVGElement> & { size?: number };
+export function Arrow({ size = 20, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="M4 12h15M13 5l7 7-7 7" /></svg>; }
+export function ArrowUpRight({ size = 22, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="M5 19 19 5M5 5h14v14" /></svg>; }
+export function Bookmark({ size = 20, filled = false, ...props }: Props & { filled?: boolean }) { return <svg width={size} height={size} viewBox="0 0 24 24" fill={filled ? 'currentColor' : 'none'} stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="M6 3h12v18l-6-4-6 4z" /></svg>; }
+export function Close({ size = 24, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="m5 5 14 14M19 5 5 19" /></svg>; }
+export function Plus({ size = 20, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="M12 4v16M4 12h16" /></svg>; }
+export function Check({ size = 20, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><path d="m4 12 5 5L20 6" /></svg>; }
+export function Globe({ size = 20, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><circle cx="12" cy="12" r="9" /><ellipse cx="12" cy="12" rx="4" ry="9" /><path d="M3 12h18" /></svg>; }
+export function Search({ size = 20, ...props }: Props) { return <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true" {...props}><circle cx="10" cy="10" r="6.5" /><path d="m15 15 6 6" /></svg>; }

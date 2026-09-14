@@ -1,0 +1,1 @@
+export function Brand({ large = false }: { large?: boolean }) { return <span className={`brand ${large ? 'brand-large' : ''}`}><svg className="brand-mark" width="35" height="35" viewBox="0 0 35 35" aria-hidden="true"><path d="M2 31V4h8l15 18V4h8v27h-8L10 13v18z" fill="currentColor" /></svg><span>NORTHFORGE<span className="brand-sub">GROUP</span></span></span>; }

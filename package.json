@@ -1,0 +1,30 @@
+{
+  "name": "northforge-group",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --hostname 0.0.0.0 --port 3016",
+    "build": "next build",
+    "typecheck": "tsc --noEmit",
+    "lint": "eslint app components lib scripts tests",
+    "test:flows": "playwright test",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "@fontsource-variable/manrope": "^5.3.0",
+    "next": "16.3.5",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.2",
+    "@playwright/test": "^1.55.0",
+    "@types/node": "^24.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "eslint": "^9.0.0",
+    "eslint-config-next": "16.3.5",
+    "sharp": "^0.35.4",
+    "typescript": "^5.9.0"
+  }
+}
