@@ -15,7 +15,7 @@ Completed 14 September 2026. Verification used the production static export and 
 
 Nine Playwright test groups passed across the initial run and targeted reruns after corrections:
 
-1. All 24 listed content destinations, including every project/expertise detail and legacy info route, load with headings, valid canonical/social metadata, local imagery and no mock/view-only notices. The branded 404 returns HTTP 404.
+1. All 23 listed content destinations, including every project/expertise detail and legacy info route, load with headings, valid canonical/social metadata, local imagery and no mock/view-only notices. The branded 404 returns HTTP 404.
 2. Expertise and region filters, keyword search, empty results, reset, browser back and return from a case study preserve public filter context.
 3. Atlas marker/list selection and keyboard controls update the matching project; bridge stage controls update the explanatory diagram.
 4. Saved projects survive reload and synchronise between tabs.
@@ -53,3 +53,21 @@ The initial contact screenshots exposed stale dev-server route registration. Res
 ## Operational boundaries
 
 Inquiries and career profiles stay in the current browser and can be exported manually. No message is transmitted and no recipient acknowledgment is claimed. Browser clearing removes records; no device synchronisation. The site is intended for private Sites publication unless the owner explicitly changes its audience. No external client email, phone number, contract or real-world accreditation has been invented.
+
+## English, Arabic and Sorani update — completed 15 September 2026
+
+This update is local only, following the user's explicit instruction. It has not been pushed or deployed. The existing Sites manifest and original publication remain unchanged. The local production export is served at `http://localhost:4176/`.
+
+- Production build passed with 73 generated entries: 69 content pages (23 in each language) plus Next.js metadata and not-found entries. TypeScript and ESLint passed.
+- All nine original flow groups passed against the translated implementation.
+- All seven language groups passed across the initial run and a targeted rerun correcting a test assertion's attribute-name casing. Both translation catalogs have 587 nonempty keys with matching variable placeholders.
+- All 46 Arabic and Sorani content pages were requested directly and visited in Chromium. Each returned 200, included the correct static `lang` and RTL direction, localized headings and descriptions, canonical and language alternatives, and had no unexpected visible English text or page errors. Proper names and stable technical export labels were intentionally allowed.
+- Keyboard selector operation, Escape/focus return, native language links, current project, filter query, URL fragment, saved bookmarks and return-to-collection behavior passed. Reload retained the selected language through its URL.
+- Arabic and Sorani keyword search, inquiry validation, save/edit under the same reference, translated text download and career-profile download passed. Visitor-authored text and inquiry drafts survived language changes. Switching also worked with browser storage blocked.
+- Six representative routes in all three languages had no horizontal overflow at widths 360, 390, 768, 1024 and 1440px (900px height). The open language panel stayed within every viewport. Axe reported no WCAG 2/2.1/2.2 A/AA violations for the open selector/homepage at 390px and 1440px in each language.
+
+Visual inspection covered all three desktop home selectors, the Sorani mobile selector, Arabic mobile projects, Sorani mobile case study, Arabic desktop contact and Sorani global atlas. Evidence is under `.impeccable/review/languages/`. A single correction batch aligned empty form fields with the page direction and mirrored remaining directional arrows. Full-page screenshots were recaptured after scrolling through lazy-loaded photographs; no asset loading error occurred.
+
+After that correction, the build, TypeScript, ESLint and three affected language test groups passed again. Browser checks confirmed an empty Arabic field uses RTL, English visitor text uses LTR, and Arabic visitor text uses RTL. The confirmation screenshots showed the corrected fields, arrows and fully loaded project galleries.
+
+Native names, Arabic-script shaping and responsive layout were inspected visually. No independent native-speaker editorial review was performed. The static unknown-route fallback remains the shared English 404; all listed content destinations have complete translated pages. Existing performance observations above apply to the original English build, not a new multilingual performance measurement.

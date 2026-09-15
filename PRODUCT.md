@@ -21,7 +21,10 @@ NORTHFORGE plans, engineers, builds, and maintains transport, marine, industrial
 Eight internally consistent project case studies, four expertise detail pages, project discovery with URL filters, accessible geographic explorer, group, careers with three opportunities, contact review/save/edit/export/print flow, saved projects, accurate privacy and browser-data controls, 404 recovery. Public content is typed and bundled. Visitor state stays in versioned browser storage, with validation and memory fallback. Never claim an inquiry was transmitted. No invented clients, accreditations, awards, measured performance, phone numbers, or real street addresses. Generated original industrial imagery with documented provenance.
 
 ## Brand Commitments
-Name NORTHFORGE GROUP. Capable, precise, grounded, confident, internationally minded. Photography leads; concise edited English. User grants full creative ownership, no design approval checkpoints.
+Name NORTHFORGE GROUP. Capable, precise, grounded, confident, internationally minded. Photography leads; concise edited copy in English, Arabic and Iraqi Sorani Kurdish. User grants full creative ownership, no design approval checkpoints.
+
+## Languages
+English remains at the existing URLs; Arabic uses `/ar/` and Sorani uses `/ckb/`. Both Arabic-script languages use right-to-left layouts and a locally bundled font. A consistent header selector displays English, العربية and کوردی, preserves destination and filter context, and works with keyboard and touch. Translate complete pages, metadata, accessible labels, validation and text exports. Keep visitor-authored text and shared browser records intact when switching. The user requested this update remain local.
 
 ## Evidence on Hand
 The supplied complete project brief is the authoritative scope. Project identities, locations, dates, and specifications are authored fictional portfolio content, documented internally. No real commissions, clients, or executive biographies are supplied.

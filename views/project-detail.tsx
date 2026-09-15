@@ -1,0 +1,17 @@
+import { translator, type Locale } from '@/lib/i18n';
+import { notFound } from 'next/navigation';
+import Link from '@/components/locale-link';
+import { projects, projectById, expertiseById, regionById } from '@/lib/content';
+import { ContactBand, Photo, ProjectCard, TextLink } from '@/components/shared';
+import { SaveButton } from '@/components/workspace-ui';
+import { PrintButton, ProjectBack } from '@/components/project-actions';
+import { BridgeDiagram } from '@/components/bridge-diagram';
+import { pageMetadata } from '@/lib/metadata';
+export function generateStaticParams() { return projects.map(p => ({ slug: p.id })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const p = projectById((await params).slug); if (!p) return {}; return pageMetadata(p.name, p.summary, `/projects/${p.id}/`, `/og/${p.id}.jpg`); }
+export default async function ProjectPage({ params, locale = 'en' }: { params: Promise<{ slug: string }>; locale?: Locale }) {
+  const t = translator(locale);
+  const p = projectById((await params).slug); if (!p) notFound();
+  const related = projects.filter(x => x.id !== p.id).sort((a,b) => Number(b.expertise === p.expertise) - Number(a.expertise === p.expertise)).slice(0, 2);
+  return <><section className="case-opening wrap"><ProjectBack /><div className="case-title"><h1>{t(p.name)}</h1><SaveButton id={p.id} full /></div><div className="case-meta"><Link href={`/expertise/${p.expertise}/`}>{t(expertiseById(p.expertise).name)}</Link><span>{t(p.country)}</span><span>{t(p.stage)}</span></div></section><div className="case-hero"><Photo id={p.id} priority alt={p.captions[0]} /></div><div className="wrap"><div className="case-intro"><div className="case-facts"><dl><div><dt>{t("Location")}</dt><dd>{t(p.location)}</dd></div><div><dt>{t("Region")}</dt><dd>{t(regionById(p.region)?.name)}</dd></div><div><dt>{t("Project stage")}</dt><dd>{t(p.stage)} · {p.year}</dd></div>{p.facts.map(([key,value]) => <div key={key}><dt>{t(key)}</dt><dd>{t(value)}</dd></div>)}</dl><PrintButton /></div><div className="case-story"><h2>{t(p.headline)}</h2><p className="case-summary">{t(p.summary)}</p><h3>{t("The challenge")}</h3><p>{t(p.challenge)}</p><h3>{t("Our approach")}</h3><p>{t(p.response)}</p><details className="scope-details"><summary>{t("Scope of work")}<span aria-hidden="true">+</span></summary><ul>{p.scope.map(s => <li key={s}>{t(s)}</li>)}</ul></details></div></div><figure className="case-gallery-wide"><div className="gallery-frame"><Photo id={p.id} index={2} alt={p.captions[1]} /></div><figcaption>{t(p.captions[1])}</figcaption></figure>{p.id === 'north-channel-crossing' && <BridgeDiagram />}{p.flagship && <div className="case-gallery-pair">{[3,4].map(n => <figure key={n}><Photo id={p.id} index={n} alt={p.captions[n-1]} sizes="(min-width: 700px) 50vw, 100vw" /><figcaption>{t(p.captions[n-1])}</figcaption></figure>)}</div>}<section className="case-perspective"><h2>{t("Considered for")}<br /> {t(" the long term.")}</h2><p>{t(p.perspective)}</p></section><section className="related-projects"><div className="section-heading"><h2>{t("Connected thinking.")}<br /> {t(" More of our work.")}</h2><TextLink href={`/projects/?expertise=${p.expertise}`}>{t("Explore {expertise}", { expertise: t(expertiseById(p.expertise).short) })}</TextLink></div><div className="project-grid">{related.map(x => <ProjectCard project={x} key={x.id} />)}</div></section></div><ContactBand discipline={p.expertise} region={p.region} title={t("A similar challenge ahead?")} /></>;
+}

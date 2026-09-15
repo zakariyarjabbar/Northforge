@@ -153,13 +153,26 @@
       "control": {
         "displayName": "Control",
         "purpose": "Standard action buttons."
+      },
+      "rtl-body": {
+        "displayName": "Arabic-script Body",
+        "purpose": "Arabic and Sorani body copy; Noto Sans Arabic, natural tracking and context-specific line height."
+      },
+      "rtl-display": {
+        "displayName": "Arabic-script Display",
+        "purpose": "Arabic and Sorani hero statement; 45px/1.5 on phones."
       }
     },
     "shadows": [
       {
         "name": "notification",
         "value": "0 6px 28px #0003",
-        "purpose": "Transient bottom notification only; cards remain flat."
+        "purpose": "Transient bottom notification; cards remain flat."
+      },
+      {
+        "name": "language-panel",
+        "value": "0 14px 32px #0c18182b",
+        "purpose": "Floating language control above the page."
       }
     ],
     "motion": [
@@ -223,6 +236,14 @@
       {
         "name": "wide-desktop-min",
         "value": "1700px"
+      },
+      {
+        "name": "header-cta-max",
+        "value": "1380px"
+      },
+      {
+        "name": "header-menu-max",
+        "value": "1100px"
       }
     ]
   },
@@ -310,11 +331,11 @@
   ],
   "narrative": {
     "northStar": "The Engineering Annual",
-    "overview": "Broad photographic fields, carefully cropped infrastructure, large Manrope statements, and generous ivory intervals give NORTHFORGE a precise, expansive industrial identity. Graphite sections and fine rules organize the rhythm; signal yellow carries direction and selected state.\n\nThis documents the built system in `app/layout.tsx`, `app/globals.css`, `app/pages.css`, and the shared components. The code-led design was developed under delegated creative ownership; there is no approved mockup. NORTHFORGE is fictional portfolio work, recorded here as internal context; the public presentation uses finished company copy.",
+    "overview": "Broad photographic fields, carefully cropped infrastructure, large Manrope statements, and generous ivory intervals give NORTHFORGE a precise, expansive industrial identity. Graphite sections and fine rules organize the rhythm; signal yellow carries direction and selected state.\n\nThis documents the built system in `components/site-root.tsx`, `app/globals.css`, `app/pages.css`, `app/languages.css`, and the shared components. The code-led design was developed under delegated creative ownership; there is no approved mockup. NORTHFORGE is fictional portfolio work, recorded here as internal context; the public presentation uses finished company copy.",
     "keyCharacteristics": [
       "Photography leads; captions and engineering detail support it.",
       "Flat, unframed layouts use asymmetric columns and strong horizontal rules.",
-      "One type family connects expressive headings with familiar controls.",
+      "A consistent typographic hierarchy connects expressive headings with familiar controls in each script.",
       "Geographic selection, saved projects, and inquiry records have explicit visible states."
     ],
     "rules": [
@@ -324,13 +345,13 @@
         "section": "colors"
       },
       {
-        "name": "The Single-Family Rule",
-        "body": "Keep hierarchy in scale, weight, tracking, and whitespace within Manrope.",
+        "name": "The Script-Family Rule",
+        "body": "Keep hierarchy in scale, weight and whitespace within Manrope for English and Noto Sans Arabic for Arabic and Sorani.",
         "section": "typography"
       },
       {
         "name": "The Flat Surface Rule",
-        "body": "Separate content with space, imagery, tone, and rules; reserve the shared shadow for notifications.",
+        "body": "Separate content with space, imagery, tone, and rules; reserve shadows for notifications and floating controls.",
         "section": "elevation"
       }
     ],

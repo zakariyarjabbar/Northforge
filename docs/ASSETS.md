@@ -28,6 +28,7 @@ Final files have a large 1920px target and a 720px responsive counterpart; sourc
 ## Other assets
 
 - **Manrope**: self-hosted Latin variable font obtained from `@fontsource-variable/manrope` 5.3.0. SIL Open Font License included at `public/fonts/OFL.txt`. No runtime font requests.
+- **Noto Sans Arabic**: Arabic-script variable font for Arabic and Sorani, obtained from `@fontsource-variable/noto-sans-arabic` 5.3.0. [Fontsource package documentation](https://fontsource.org/fonts/noto-sans-arabic/install). Bundled as `public/fonts/noto-sans-arabic.woff2`, with the SIL Open Font License at `public/fonts/NotoSansArabic-OFL.txt`. Served locally with `next/font/local`; no third-party font request.
 - **World map**: Natural Earth 1:110m land polygons, public domain. Source: [Natural Earth vector repository](https://github.com/nvkelso/natural-earth-vector/blob/master/geojson/ne_110m_land.geojson). [Terms of use](https://www.naturalearthdata.com/about/terms-of-use/). Simplified into a local SVG using an equirectangular projection with the same coordinate transform as project markers. Viewport covers 80°N to 60°S.
 - **Wordmark, N symbol, favicon and icons**: authored SVG/vector interface assets. No third-party brand assets.
 - **Bridge diagram**: authored SVG explanatory structural diagram, not a construction drawing or engineering specification.

@@ -1,0 +1,9 @@
+import { translator, type Locale } from '@/lib/i18n';
+import { notFound } from 'next/navigation';
+import { expertise, projects } from '@/lib/content';
+import { Breadcrumb, ContactBand, Photo, ProjectCard } from '@/components/shared';
+import { pageMetadata } from '@/lib/metadata';
+export function generateStaticParams() { return expertise.map(e => ({ slug: e.id })); }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) { const { slug } = await params; const e = expertise.find(e => e.id === slug); return e ? pageMetadata(e.name, e.description, `/expertise/${e.id}/`, `/og/${e.image}.jpg`) : {}; }
+export default async function ExpertiseDetail({ params, locale = 'en' }: { params: Promise<{ slug: string }>; locale?: Locale }) {
+  const t = translator(locale); const { slug } = await params; const e = expertise.find(x => x.id === slug); if (!e) notFound(); return <><div className="wrap"><Breadcrumb items={[{ label: 'Expertise', href: '/expertise/' }, { label: e.name }]} /><div className="page-heading"><h1>{t(e.title)}</h1><p>{t(e.description)}</p></div></div><div className="expertise-detail-hero"><Photo id={e.image} alt={e.description} priority /><span>{t(e.name)}</span></div><div className="wrap"><section className="capability-intro"><h2>{t(e.name)}</h2><div><p>{t(e.intro)}</p><h3>{t("Our scope")}</h3><ul className="scope-list">{e.scopes.map(s => <li key={s}>{t(s)}</li>)}</ul></div></section><section className="capability-approach"><h2>{t("A connected approach.")}</h2><ol>{e.approach.map((a,i) => <li key={a}><span>{String(i+1).padStart(2,'0')}</span><h3>{t(a)}</h3></li>)}</ol></section><section className="related-projects"><div className="section-heading"><h2>{t("{expertise} in practice.", { expertise: t(e.short) })}</h2></div><div className="project-grid">{projects.filter(p => p.expertise === e.id).map(p => <ProjectCard project={p} key={p.id} />)}</div></section></div><ContactBand discipline={e.id} /></>; }

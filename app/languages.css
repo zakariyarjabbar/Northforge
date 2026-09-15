@@ -1,0 +1,75 @@
+/* One navigation language control, with native names and generous hit areas. */
+.language-selector{position:relative;flex-shrink:0}
+.language-trigger{min-height:44px;display:flex;align-items:center;gap:9px;padding:8px 12px;background:transparent;color:var(--paper);border:1px solid #60695f;font-size:13px;white-space:nowrap;transition:background .2s,border-color .2s}
+.language-trigger:hover,.language-trigger.is-open{border-color:var(--accent);background:#343e32}
+.language-trigger>svg:first-child{color:var(--accent)}
+.language-trigger>span[lang=ar],.language-trigger>span[lang=ckb],.language-native:not([lang=en]){font-family:var(--font-arabic),sans-serif;letter-spacing:0}
+.language-chevron{transition:transform .2s var(--ease)}
+.language-trigger.is-open .language-chevron{transform:rotate(180deg)}
+.language-panel{position:absolute;inset-block-start:calc(100% + 14px);inset-inline-end:0;width:252px;background:var(--paper);color:var(--ink);border:1px solid var(--line);padding:12px;box-shadow:0 14px 32px #0c18182b}
+.language-panel[hidden]{display:none}
+.language-panel>p{font-size:12px;color:var(--muted);padding:8px 10px 12px}
+.language-panel nav{display:flex;flex-direction:column;gap:4px}
+.language-panel a{display:flex;align-items:center;gap:12px;min-height:54px;padding:10px 12px;border:1px solid transparent;transition:background .2s}
+.language-panel a:hover{background:#e5eadb}
+.language-panel a[aria-current]{background:var(--accent)}
+.language-native{font-size:17px;flex:1;text-align:start}
+.language-native[lang=en]{font-family:var(--font-manrope),sans-serif;font-size:15px}
+.language-code{font:11px var(--font-manrope),sans-serif;color:#535e4b;direction:ltr}
+.site-header{gap:24px}
+.desktop-nav{gap:clamp(16px,1.6vw,28px);margin-left:0;margin-inline-start:auto}
+.header-actions{gap:16px}
+.brand{direction:ltr;font-family:var(--font-manrope),sans-serif}
+.saved-link{min-width:44px;justify-content:center}
+
+/* Arabic and Sorani use the same local Arabic-script face with natural tracking. */
+html[dir=rtl]{--font-sans:var(--font-arabic),var(--font-manrope),sans-serif}
+[dir=rtl] h1,[dir=rtl] h2,[dir=rtl] h3,[dir=rtl] h4{letter-spacing:0;line-height:1.4}
+[dir=rtl] .hero-content h1{line-height:1.35;font-size:clamp(52px,6.4vw,90px);letter-spacing:0;max-width:900px}
+[dir=rtl] .hero-shade{background:linear-gradient(270deg,rgba(8,24,22,.75),rgba(15,28,23,.34) 52%,rgba(14,27,22,0) 85%),linear-gradient(0deg,rgba(9,21,16,.65),transparent 25%)}
+[dir=rtl] .hero-content>p{font-size:18px;line-height:1.85}
+[dir=rtl] .hero-content{padding-top:clamp(65px,7vh,110px)}
+[dir=rtl] .hero-bottom>span{letter-spacing:0}
+[dir=rtl] .desktop-nav a{font-size:14px}
+[dir=rtl] .desktop-nav a:after{transform-origin:right}
+[dir=rtl] .page-heading{gap:40px}
+[dir=rtl] .page-heading h1{font-size:clamp(44px,5.2vw,76px)}
+[dir=rtl] .case-title h1{font-size:clamp(42px,5vw,72px)}
+[dir=rtl] .text-link{white-space:normal;text-align:start;line-height:1.8}
+[dir=rtl] .project-card-meta,[dir=rtl] .case-meta,[dir=rtl] .footer-main nav>a,[dir=rtl] .breadcrumb{font-size:14px}
+[dir=rtl] .field label,[dir=rtl] .field-error,[dir=rtl] .data-note{font-size:14px}
+[dir=rtl] .case-story>p,[dir=rtl] .prose p{line-height:2}
+[dir=rtl] .contact-intro h1{font-size:clamp(38px,3.7vw,55px);line-height:1.5}
+[dir=rtl] .project-photo .photo-arrow,[dir=rtl] .save-button{right:auto;left:16px}
+[dir=rtl] .skip-link{left:auto;right:20px}
+[dir=rtl] .featured-strip>svg{margin-left:0;margin-inline-start:35px}
+[dir=rtl] .link-count{margin-left:0;margin-inline-start:-18px}
+[dir=rtl] .privacy-prose{margin-left:0;margin-inline-start:22%}
+[dir=rtl] .role-dialog{margin:0 auto 0 0}
+[dir=rtl] .role-close{right:auto;left:20px}
+[dir=rtl] .confirm-dialog>.icon-button{right:auto;left:7px}
+[dir=rtl] .previous-inquiries>button,[dir=rtl] .atlas-project-list button,[dir=rtl] .stage-buttons button{text-align:start}
+[dir=rtl] .filter-field>select{padding:0 0 0 24px}
+[dir=rtl] .case-meta>span{border-left:0;border-inline-start:1px solid var(--line);padding-left:0;padding-inline-start:20px}
+[dir=rtl] .scope-details ul,[dir=rtl] .role-requirements ul{padding-left:0;padding-inline-start:20px}
+[dir=rtl] .form-actions>span{margin-left:0;margin-inline-start:auto}
+[dir=rtl] .atlas-map,[dir=rtl] .bridge-diagram>svg{direction:ltr}
+[dir=rtl] .atlas-map .marker-tooltip,[dir=rtl] .map-caption,[dir=rtl] .map-equator{direction:rtl;letter-spacing:0}
+[dir=rtl] .bridge-diagram text{font-family:var(--font-arabic),sans-serif;letter-spacing:0}
+[dir=rtl] .results-bar strong{margin-right:0;margin-inline-end:12px}
+[dir=rtl] .round-link>svg,[dir=rtl] .hero-link .arrow-square>svg,[dir=rtl] .project-title-link>svg,[dir=rtl] .region-links>a>svg,[dir=rtl] .record-actions .button>svg,[dir=rtl] .form-actions .button>svg{scale:-1 1}
+[dir=rtl] .text-link>svg,[dir=rtl] .project-back>svg,[dir=rtl] .header-cta>svg{scale:-1 1}
+[dir=rtl] .hero-bottom>a>svg,[dir=rtl] .photo-arrow>svg,[dir=rtl] .atlas-project-list button>svg,[dir=rtl] .expertise-rows>a>svg,[dir=rtl] .featured-strip>svg,[dir=rtl] .global-image>span>svg,[dir=rtl] .previous-inquiries>button>svg,[dir=rtl] .career-form>.button>svg{scale:-1 1}
+.language-trigger:focus-visible,.language-panel a:focus-visible{outline-color:#648609;outline-offset:3px}
+.site-header .language-trigger:focus-visible{outline-color:var(--accent)}
+@media(max-width:1380px){.header-cta{display:none}}
+@media(max-width:1100px){.desktop-nav{display:none}.menu-toggle{display:flex}.header-actions{margin-inline-start:auto}}
+@media(max-width:850px){[dir=rtl] .privacy-prose{margin-inline-start:10%}[dir=rtl] .page-heading h1{font-size:50px}[dir=rtl] .form-actions>span{margin-inline-start:auto}}
+@media(max-width:580px){
+  .site-header{gap:8px;padding-inline:18px}.header-actions{gap:5px}.brand{font-size:15px;gap:7px}.brand-mark{width:26px}.brand-sub{font-size:8px;letter-spacing:.28em}.language-trigger{gap:6px;padding:7px 8px;font-size:11px}.language-trigger>svg:first-child{width:16px}.language-chevron{width:11px}.saved-link{display:none}.language-panel{width:238px;inset-inline-end:-35px}
+  [dir=rtl] .hero-content h1{font-size:45px;line-height:1.5}[dir=rtl] .hero-content{padding-top:70px}[dir=rtl] .hero-content>p{font-size:16px;line-height:1.9}[dir=rtl] .hero-link{margin-top:25px}[dir=rtl] .hero-bottom>a{font-size:13px}[dir=rtl] .hero-bottom small{font-size:12px;line-height:1.7}
+  [dir=rtl] .page-heading h1,[dir=rtl] .case-title h1{font-size:40px}[dir=rtl] .page-heading>p{font-size:16px}[dir=rtl] .contact-intro h1{font-size:38px}[dir=rtl] .project-card-meta,[dir=rtl] .case-meta,[dir=rtl] .footer-main nav>a{font-size:13px}[dir=rtl] .project-title-link h3{font-size:25px}
+  [dir=rtl] .form-steps li{font-size:12px}[dir=rtl] .stage-buttons button{font-size:12px;line-height:1.8}[dir=rtl] .privacy-prose{margin:0}[dir=rtl] .featured-strip>svg{margin-inline-start:auto}[dir=rtl] .case-meta>span{padding-inline-start:12px}[dir=rtl] .form-actions>span{margin-inline-start:0}[dir=rtl] .results-bar>p{font-size:12px}[dir=rtl] .footer-bottom{font-size:12px}[dir=rtl] .footer-bottom>div{flex-wrap:wrap;justify-content:flex-start;gap:16px 24px}
+}
+@media(max-width:360px){.site-header{padding-inline:12px}.brand{font-size:13px}.brand-sub{font-size:7px}.language-trigger{padding-inline:6px}.menu-toggle{width:40px}.language-trigger>span{max-width:54px}.language-panel{inset-inline-end:-35px}}
+@media print{.language-selector{display:none!important}}

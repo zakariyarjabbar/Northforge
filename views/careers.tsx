@@ -1,0 +1,7 @@
+import { translator, type Locale } from '@/lib/i18n';
+import { Breadcrumb, Photo } from '@/components/shared';
+import { Careers } from '@/components/careers';
+import { pageMetadata } from '@/lib/metadata';
+export const metadata = pageMetadata('Careers', 'Bring your perspective to NORTHFORGE. Explore engineering and construction opportunities.', '/careers/');
+export default function CareersPage({ locale = 'en' }: { locale?: Locale }) {
+  const t = translator(locale); return <div className="wrap careers-page"><Breadcrumb items={[{ label: 'The Group', href: '/group/' },{ label: 'Careers' }]} /><div className="page-heading"><h1>{t("Your thinking.")}<br /> {t(" Our next chapter.")}</h1><p>{t("For people who ask good questions")}<br /> {t(" and care about the work.")}</p></div><div className="careers-image"><Photo id="redstone-industrial-campus" index={2} alt={t("An expansive, carefully engineered industrial structure")} priority/></div><section className="careers-intro"><h2>{t("Build a career")}<br /> {t(" with substance.")}</h2><p>{t("From the drawing to the site, our work brings different people and disciplines together. We value clear thinking, shared knowledge and the willingness to see a challenge through.")}</p></section><section className="opportunities"><div className="section-heading"><h2>{t("Find your next opportunity.")}</h2><span>{t("Engineering · Construction · Early careers")}</span></div><Careers/></section></div>; }

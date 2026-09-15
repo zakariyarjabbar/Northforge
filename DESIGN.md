@@ -50,6 +50,18 @@ typography:
     fontSize: "14px"
     fontWeight: 400
     lineHeight: 1.4
+  rtl-body:
+    fontFamily: "Noto Sans Arabic, Manrope, sans-serif"
+    fontSize: "16px"
+    fontWeight: 400
+    lineHeight: 1.6
+    letterSpacing: "0"
+  rtl-display:
+    fontFamily: "Noto Sans Arabic, Manrope, sans-serif"
+    fontSize: "clamp(52px, 6.4vw, 90px)"
+    fontWeight: 500
+    lineHeight: 1.35
+    letterSpacing: "0"
 rounded:
   square: "0px"
   circle: "50%"
@@ -91,6 +103,12 @@ components:
   navigation:
     backgroundColor: "{colors.ink}"
     textColor: "{colors.paper}"
+  language-selector:
+    backgroundColor: "{colors.paper}"
+    textColor: "{colors.ink}"
+    rounded: "{rounded.square}"
+    padding: "12px"
+    width: "252px"
   filter-chip:
     backgroundColor: "#e6eadf"
     textColor: "{colors.ink}"
@@ -127,13 +145,13 @@ components:
 
 Broad photographic fields, carefully cropped infrastructure, large Manrope statements, and generous ivory intervals give NORTHFORGE a precise, expansive industrial identity. Graphite sections and fine rules organize the rhythm; signal yellow carries direction and selected state.
 
-This documents the built system in `app/layout.tsx`, `app/globals.css`, `app/pages.css`, and the shared components. The code-led design was developed under delegated creative ownership; there is no approved mockup. NORTHFORGE is fictional portfolio work, recorded here as internal context; the public presentation uses finished company copy.
+This documents the built system in `components/site-root.tsx`, `app/globals.css`, `app/pages.css`, `app/languages.css`, and the shared components. The code-led design was developed under delegated creative ownership; there is no approved mockup. NORTHFORGE is fictional portfolio work, recorded here as internal context; the public presentation uses finished company copy.
 
 **Key Characteristics:**
 
 - Photography leads; captions and engineering detail support it.
 - Flat, unframed layouts use asymmetric columns and strong horizontal rules.
-- One type family connects expressive headings with familiar controls.
+- A consistent typographic hierarchy connects expressive headings with familiar controls in each script.
 - Geographic selection, saved projects, and inquiry records have explicit visible states.
 
 ## Colors
@@ -158,8 +176,11 @@ The functional `error` red is reserved for field errors and invalid borders. It 
 
 **Display Font:** Manrope, with sans-serif fallback.
 **Body Font:** Manrope, with sans-serif fallback.
+**Arabic and Sorani:** Noto Sans Arabic, with Manrope and sans-serif fallback.
 
 The variable font is self-hosted from `public/fonts/manrope-latin.woff2`, loaded with `display: swap` and a declared weight range of 400–700. There is no separate serif or monospace family. Headings use medium weight, close tracking, balanced wrapping, and deliberate line breaks; supporting copy is quieter and comfortably spaced.
+
+Arabic and Sorani use the locally bundled `public/fonts/noto-sans-arabic.woff2` in the same weight range. Arabic-script headings have zero tracking and a 1.4 line height; the hero uses the `rtl-display` role, becoming 45px/1.5 on phones. Prose uses up to 2 line height. The wordmark and short language codes keep Manrope. Preserve Arabic-script letter connections and marks; do not apply Latin uppercase tracking.
 
 ### Hierarchy
 
@@ -169,7 +190,7 @@ The variable font is self-hosted from `public/fonts/manrope-latin.woff2`, loaded
 - **Body:** standard prose uses the `body` role. Leads range from 17–23px; long case prose is capped at 70ch, and role requirements at 65ch.
 - **Label / Control:** the frontmatter roles cover metadata and buttons. Desktop navigation uses 13px text; inquiry inputs use 15px, increasing to 16px on narrow screens. Uppercase tracking is limited to identity and small editorial labels.
 
-**The Single-Family Rule.** Keep hierarchy in scale, weight, tracking, and whitespace within Manrope.
+**The Script-Family Rule.** Keep hierarchy in scale, weight and whitespace within Manrope for English and Noto Sans Arabic for Arabic and Sorani.
 
 ## Layout
 
@@ -181,20 +202,24 @@ Image containers control composition with `object-fit: cover`: default cards are
 
 Responsive changes are contextual rather than a single framework scale:
 
-- **1180px and below:** compact desktop navigation; hide its contact CTA; reduce dense grids and gaps.
+- **1380px and below:** hide the header contact CTA to retain space for the language selector.
+- **1180px and below:** compact desktop navigation; reduce dense grids and gaps.
+- **1100px and below:** switch to native-dialog navigation while retaining the language selector.
 - **850px and below:** stack the atlas map above its detail area, expand search across both filter columns, and stack the contact layout.
-- **800px and below:** switch the header to native-dialog navigation; simplify shared editorial layouts.
+- **800px and below:** reduce header height and simplify shared editorial layouts.
 - **580px and below:** use one-column project and form layouts; hide the geographic map and retain the two-column project selector and selected detail; stack case and expertise sections.
 - **520px and below:** remove the home-card stagger, stack the selected pair, and apply the smallest shared gutter.
 - **1700px and above:** set the home hero's content top padding to 140px.
+
+Arabic and Sorani mirror reading order, navigation placement, directional arrows and content alignment. Photography, the world map, marker coordinates and construction geometry retain their orientation. User-authored text chooses its own direction; empty fields inherit the page direction. Email addresses and record IDs remain left-to-right.
 
 Print rules target case and inquiry summaries: white paper, 18mm page margins, 11pt base type, 30/20/14pt headings, and a 180pt case hero. Navigation, footer, contact bands, interactive controls, related projects, diagrams, and galleries are omitted. Inquiry detail groups avoid page breaks internally.
 
 ## Elevation & Depth
 
-Cards and sections are flat. Photography, contrast between ivory and graphite, fine borders, and restrained hero shading create depth. Confirmation and career dialogs use a dark translucent backdrop; the mobile menu is opaque graphite. No blur or glass layer is applied. The transient notification is the only shared shadowed surface (`0 6px 28px #0003`).
+Cards and sections are flat. Photography, contrast between ivory and graphite, fine borders, and restrained hero shading create depth. Confirmation and career dialogs use a dark translucent backdrop; the mobile menu is opaque graphite. No blur or glass layer is applied. The notification uses `0 6px 28px #0003`; the floating language panel uses `0 14px 32px #0c18182b` to separate it from the photograph beneath.
 
-**The Flat Surface Rule.** Separate content with space, imagery, tone, and rules; reserve the shared shadow for notifications.
+**The Flat Surface Rule.** Separate content with space, imagery, tone, and rules; reserve shadows for notifications and floating controls.
 
 ## Shapes
 
@@ -223,6 +248,10 @@ Inquiry and career fields are native labeled inputs, selects, and textareas with
 ### Navigation
 
 The graphite header stays visible above photography. Desktop links use a fine yellow underline for hover and the current page. At the mobile breakpoint, a named native `<dialog>` opens through `showModal()`, fills the viewport, and presents large ruled links plus an explicit close button. Opening opportunities uses the same native pattern in a right-aligned panel capped at 760px; data reset uses a centered confirmation dialog capped at 560px. Preserve native modal behavior and clear dialog names.
+
+### Language Selector
+
+The header trigger combines a signal-yellow globe, the current native language name, and a chevron in a 44px minimum outlined control. Its ivory dropdown is 252px wide, reducing to 238px on phones; the selected 54px row uses signal yellow and a checkmark. English, العربية and کوردی are always visible in their native scripts. Keyboard arrows, Home and End move between choices; Escape closes and restores trigger focus. Outside pointer interaction or focus closes the panel. Choosing a language preserves the current page, filter parameters, fragment and browser records.
 
 ### Project Atlas
 

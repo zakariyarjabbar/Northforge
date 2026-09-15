@@ -8,6 +8,9 @@ Follow PRODUCT.md and the user's supplied brief. NORTHFORGE is fictional portfol
 ## Architecture
 Next.js App Router + TypeScript, `output: 'export'`, typed bundled content, optimized local images, no database/authentication/backend/form service. All public detail routes pre-rendered. Browser APIs only in client-safe code. Shared versioned storage uses `northforge:v1:` and removes only that namespace when resetting.
 
+## Languages
+Maintain English at the existing URLs, Arabic under `/ar/`, and Sorani Kurdish under `/ckb/`. Shared templates live in `views/`. Keep both translation catalogs complete, including metadata, accessible names, form messages and text exports. Internal links must use the locale-aware link helper. Preserve filter URLs and browser records across language changes; never translate visitor-authored text. Render `lang` and `dir` in static HTML, preserve map geography, and use logical spacing in RTL layouts. The latest language update is local-only at the user's request.
+
 ## Creative priorities
 Photography first, concise copy, distinctive industrial editorial identity, complete multi-page journey, familiar navigation, accessible map/list equivalence. Preserve unrelated user work. Use DESIGN.md as visual authority after implementation.
 
